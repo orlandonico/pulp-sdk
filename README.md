@@ -121,7 +121,7 @@ make clean all run platform=<PLATFORM> CORE=<NUM_CORES>
 You can use L1 and L2 memory constraints to specify the amount of memory used inside the application. Please refer to Dory and Dory-example READMEs for more details.
 
 
-Guide to use Os-Independent Drivers on Pulp-Open with Pulp-os and freertos
+# Guide to use Os-Independent Drivers on Pulp-Open with Pulp-os and freertos
 (nico.orlando@studio.unibo.it)
 
 1) Install Pulp-Open on Lagrev
