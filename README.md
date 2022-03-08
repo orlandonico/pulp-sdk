@@ -119,3 +119,31 @@ make clean all run platform=<PLATFORM> CORE=<NUM_CORES>
 ~~~~~
 
 You can use L1 and L2 memory constraints to specify the amount of memory used inside the application. Please refer to Dory and Dory-example READMEs for more details.
+
+
+Guide to use Os-Independent Drivers on Pulp-Open with Pulp-os and freertos
+(nico.orlando@studio.unibo.it)
+
+1) Install Pulp-Open on Lagrev
+2) Pulp-SDK clone
+The firmware for pulp-os (pulp-sdk), are in:
+https://github.com/orlandonico/pulp-sdk/tree/abstraction-layer-spi
+2.1) Before using Pulp-OS do the following sources:
+    source setup/vsim.sh 
+    export PULP_RISCV_GCC_TOOLCHAIN=/usr/pack/pulpsdk-1.0-kgf/artifactory/pulp-sdk-release/pkg/pulp_riscv_gcc/1.0.16
+    export PATH=/usr/pack/pulpsdk-1.0-kgf/artifactory/pulp-sdk-release/pkg/pulp_riscv_gcc/1.0.16/bin:$PATH
+    source pulp-sdk-clone/configs/pulp-open.sh
+    cd pulp-sdk-clone/tests/
+2.2) To run a test with Pulp-SDK, check in the Makefile of the test that USE_PULPOS_TEST has been chosen correctly.
+2.3) Once in the test folder, to run it type: make clean all run platform = RTL
+
+3) FreeRTOS clone
+Firmware for freertos are in:
+https://iis-git.ee.ethz.ch/pms/freertos/-/tree/freertos-pulp-open
+3.1) Before using FreeRTOS do the following sources:
+    source setup/vsim.sh 
+    source freertos/env/pulp.sh
+    export PULP_RISCV_GCC_TOOLCHAIN=/usr/pack/pulpsdk-1.0-kgf/artifactory/pulp-sdk-release/pkg/pulp_riscv_gcc/1.0.16
+    export RISCV=/home/balasr/.riscv-10.2
+3.2) To run a test with FreeRTOS, check in the Makefile of the test that USE_FREERTOS_TEST has been chosen correctly.
+3.3) Once in the test folder, to run it type: make clean all run
