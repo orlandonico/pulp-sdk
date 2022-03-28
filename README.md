@@ -1,6 +1,36 @@
-# SDK setup
+# PULP-SDK
 
 This is the latest version of the PULP SDK, which is under active development. The previous (now legacy) version, which is no longer supported, is on the [`v1` branch](https://github.com/pulp-platform/pulp-sdk/tree/v1).
+
+## Citing
+
+If you intend to use or reference GVSoC for an academic publication, please consider citing it:
+
+```
+@INPROCEEDINGS{9643828,
+	author={Bruschi, Nazareno and Haugou, Germain and Tagliavini, Giuseppe and Conti, Francesco and Benini, Luca and Rossi, Davide},
+	booktitle={2021 IEEE 39th International Conference on Computer Design (ICCD)},
+	title={GVSoC: A Highly Configurable, Fast and Accurate Full-Platform Simulator for RISC-V based IoT Processors},
+	year={2021},
+	volume={},
+	number={},
+	pages={409-416},
+	doi={10.1109/ICCD53106.2021.00071}}
+```
+
+PULP-SDK completely supports Dory as QNNs deployment tool. You can find an example of deployment [\[here\]](#cnns-at-the-edge). If you intend to use or reference Dory for an academic publication, please consider citing it:
+
+```
+@ARTICLE{9381618,
+	author={Burrello, Alessio and Garofalo, Angelo and Bruschi, Nazareno and Tagliavini, Giuseppe and Rossi, Davide and Conti, Francesco},
+	journal={IEEE Transactions on Computers},
+	title={DORY: Automatic End-to-End Deployment of Real-World DNNs on Low-Cost IoT MCUs},
+	year={2021},
+	volume={70},
+	number={8},
+	pages={1253-1268},
+	doi={10.1109/TC.2021.3066883}}
+```
 
 ## Getting started
 
@@ -46,9 +76,11 @@ gcc --version
 
 Please, refer to official guide to update gcc if is needed.
 
-## SDK build
+## GVSoC
 
-Compile the SDK with this command:
+GVSoC is the PULP chips simulator that is natively included in the SDK and is described and evaluated fully in Bruschi et al. [\[arXiv:2201.08166v1\]](https://arxiv.org/abs/2201.08166).
+
+Compile GVSoC with this command:
 
 ~~~~~shell
 make build
@@ -64,7 +96,7 @@ Then, go to a test, for example pmsis_tests/quick/cluster/fork/, and execute:
 make clean all run
 ~~~~~
 
-This will by default execute it on gvsoc (platform=gvsoc), and you can configure the RTL platform with this command:
+This will by default execute it on GVSoC (platform=gvsoc), and you can configure the RTL platform with this command:
 
 ~~~~~shell
 make clean all run platform=rtl
@@ -73,7 +105,9 @@ make clean all run platform=rtl
 Notice that the environment variable `VSIM_PATH` should be set to the directory where the RTL platform has been built.
 This is typically done by sourcing the `setup/vsim.sh` file from the main folder of the RTL platform.
 
+<a name='cnns-at-the-edge'>
 ## Application: CNNs at the Edge
+</a>
 
 To run pre-generated real-world networks, such as MobileNetV1:
 
@@ -95,7 +129,7 @@ Please refer to its README for more details and [\[here\]](https://colab.researc
 
 #### Dory
 
-[\[Dory\]](https://github.com/pulp-platform/dory) is an automatic tool to generate and directly deploy MLP/CNNs on Pulp family boards, exploiting [\[Pulp-NN\]](https://github.com/pulp-platform/pulp-nn) as optimized back-end.
+[\[Dory\]](https://github.com/pulp-platform/dory) is an automatic tool to generate and directly deploy MLP/CNNs on PULP family boards, exploiting [\[Pulp-NN\]](https://github.com/pulp-platform/pulp-nn) as optimized back-end.
 
 Dory has a complete and autonomous testsuite, named [\[Dory-Example\]](https://github.com/pulp-platform/dory_examples), which is periodically updated, and please refer to its README for more details.
 To generate the code and run one of these examples:
